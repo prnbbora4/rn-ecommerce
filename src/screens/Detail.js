@@ -1,17 +1,31 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const Detail = ({ route }) => {
-    const { title, image, price } = route.params
+const Detail = ({ navigation, route }) => {
+    const { title, image, price, } = route.params
     return (
         <View style={styles.container}>
-            <View>
-                <Image style={styles.image} source={image} />
-                <View style={styles.textContainer}>
-                    <Text style={styles.text} >{title}</Text>
-                    <Text style={styles.textPrice}>₹ {price}</Text>
+            <View style={styles.data}>
+                <View>
+                    <Image style={styles.image} source={image} />
+                    <View style={styles.content}>
+                        <Text style={styles.text} >{title}</Text>
+                        <Text style={styles.textPrice}>₹ {price}</Text>
+                        <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.</Text>
+
+                    </View>
                 </View>
 
+                <View>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("PlaceOrderScreen")}>
+                        <Text style={styles.buttonText}>
+                            Buy Now
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     )
@@ -19,15 +33,17 @@ const Detail = ({ route }) => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        paddingHorizontal: 20,
+        height: "100%"
+    },
+    data: {
+        flex: 1,
+        justifyContent: "space-between"
     },
     image: {
         width: "100%",
         height: undefined,
         aspectRatio: 1,
-    },
-    textContainer: {
-        paddingLeft: 20,
     },
     text: {
         fontSize: 30,
@@ -36,6 +52,27 @@ const styles = StyleSheet.create({
     textPrice: {
         fontSize: 18,
         color: "green"
+    },
+    description: {
+        fontSize: 15,
+        color: "black"
+    },
+    button: {
+        width: "100%",
+        height: 60,
+        backgroundColor: "blue",
+        borderRadius: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 12,
+    },
+    buttonText: {
+        fontSize: 20,
+        color: "white"
+    },
+    content: {
+        flexDirection: "column",
+        justifyContent: "space-between",
     }
 });
 

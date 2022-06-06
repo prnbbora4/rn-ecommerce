@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-tutorial",
-    "slug": "rn-tutorial",
+    "name": "ecommerce-app",
+    "slug": "commerce-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon_bg.png",
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon_bg.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.prnbbora4_ecommapp"
     },
     "web": {
       "favicon": "./assets/icon.png"

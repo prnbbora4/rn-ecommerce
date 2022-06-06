@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from "react-native";
 
 const Card = (props) => {
-    const { title, image, price, navigation } = props;
+    const { title, image, price, navigation, route } = props;
 
     // we can send props in navigation.navigate()
     return (<View style={styles.container} >

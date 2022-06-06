@@ -7,10 +7,10 @@ const Login = ({ navigation }) => {
 
 
     const submit = () => {
-        if (username === "pranab" && password === "p@12") {
+        if (username === "p" || password === "p@12") {
             Alert.alert("Welcome " + username + " enjoy your shopping")
             // navigation.navigate("ProductScreen")
-            navigation.navigate("AllProductDemo")
+            navigation.navigate("AllProductDemo", { username: username })
         }
         else {
             Alert.alert("Invalid Credintials !!! Please Try again..")

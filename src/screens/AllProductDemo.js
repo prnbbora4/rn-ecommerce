@@ -2,7 +2,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 import ProductScreen from './Product'
 
-const AllProductDemo = ({ navigation }) => {
+const AllProductDemo = ({ navigation, route }) => {
     return (
         <ScrollView>
             <Text style={styles.textCategory}>Vegetables</Text>
