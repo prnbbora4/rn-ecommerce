@@ -2,19 +2,18 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const Detail = ({ navigation, route }) => {
-    const { title, image, price, } = route.params
+    const { title, image, price, description } = route.params
+    const imageLink = "https://sk1nixo0.directus.app/assets"
+
     return (
         <View style={styles.container}>
             <View style={styles.data}>
                 <View>
-                    <Image style={styles.image} source={image} />
+                    <Image style={styles.image} source={`${imageLink}/${image}?quality=80`} />
                     <View style={styles.content}>
                         <Text style={styles.text} >{title}</Text>
                         <Text style={styles.textPrice}>₹ {price}</Text>
-                        <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type
-                            specimen book.</Text>
+                        <Text style={styles.description}>{description}</Text>
 
                     </View>
                 </View>
