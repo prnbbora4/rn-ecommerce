@@ -4,11 +4,13 @@ import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from "react-n
 const Card = (props) => {
     const { title, image, price, description, navigation, route } = props;
     const imageLink = "https://sk1nixo0.directus.app/assets"
+    const source = `${imageLink}/${image}`
+    // console.log(source);
 
     // we can send props in navigation.navigate()
     return (<View style={styles.container} >
         <TouchableOpacity onPress={() => navigation.navigate('DetailScreen', { title: title, price: price, image: image, description: description })}>
-            <Image style={styles.image} source={`${imageLink}/${image}?quality=80`} />
+            <Image style={styles.image} source={{ uri: source }} />
             <Text style={styles.text}>{title}</Text>
             <Text style={styles.textPrice}>₹ {price}</Text>
         </TouchableOpacity>

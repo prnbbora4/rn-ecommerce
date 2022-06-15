@@ -4,12 +4,14 @@ import React from 'react'
 const Detail = ({ navigation, route }) => {
     const { title, image, price, description } = route.params
     const imageLink = "https://sk1nixo0.directus.app/assets"
+    const source = `${imageLink}/${image}`
+
 
     return (
         <View style={styles.container}>
             <View style={styles.data}>
                 <View>
-                    <Image style={styles.image} source={`${imageLink}/${image}?quality=80`} />
+                    <Image style={styles.image} source={{ uri: source }} />
                     <View style={styles.content}>
                         <Text style={styles.text} >{title}</Text>
                         <Text style={styles.textPrice}>₹ {price}</Text>
