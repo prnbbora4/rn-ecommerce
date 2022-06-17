@@ -2,8 +2,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'reac
 import React from 'react'
 
 const PlaceOrderScreen = ({ navigation, route }) => {
-
-
+    const { price } = route.params
     const [phone, setPhone] = React.useState('')
     const [address, setAddress] = React.useState('')
     const [pin, setPin] = React.useState('')
@@ -11,10 +10,10 @@ const PlaceOrderScreen = ({ navigation, route }) => {
 
     const order = () => {
         if (phone == "" && address == "" && pin == "" && state == "") {
-            Alert.alert("Something went wrong")
+            Alert.alert("Fill the form correctly..")
         }
         else {
-            Alert.alert("Successfully ordered your item")
+            Alert.alert(`Successfully ordered your item. \nPrice:  ₹ ${price}`)
         }
     }
     return (
@@ -49,6 +48,7 @@ const PlaceOrderScreen = ({ navigation, route }) => {
                     onChangeText={(data) => { setState(data) }}
                     autoCapitalize="none"
                 />
+                <Text style={styles.textPrice}> ₹ {price}</Text>
             </View>
             <View>
                 <TouchableOpacity
@@ -74,6 +74,13 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         padding: 10,
         borderBottomWidth: 1,
+    },
+    textPrice: {
+        fontSize: 30,
+        color: "black",
+        height: 60,
+        marginBottom: 12,
+        padding: 10,
     },
     button: {
         width: "100%",

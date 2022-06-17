@@ -28,7 +28,7 @@ export default function ProductScreen({ navigation }) {
 
 
     const renderItem = ({ item }) => (
-        <Card title={item.product_name} image={item.product_image} price={item.price} description={item.description} navigation={navigation} />
+        <Card title={item.product_name} image={item.product_image} price={item.product_price} description={item.description} navigation={navigation} />
     );
     return (
         <View style={styles.container}>
