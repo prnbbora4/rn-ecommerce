@@ -1,33 +1,40 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 
-const Login = ({ navigation }) => {
+const Register = ({ navigation }) => {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
 
-
-    const submit = () => {
-        if (username === "p" || password === "p@12") {
-            Alert.alert("Welcome " + username + " enjoy your shopping")
-            // navigation.navigate("ProductScreen")
-            navigation.navigate("AllProductDemo", { username: username })
-        }
-        else {
-            Alert.alert("Invalid Credintials !!! Please Try again..")
-        }
-    }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Login Here</Text>
-            <Text style={styles.description}>Feel free to login and happy shopping</Text>
+            <Text style={styles.heading}>Register Here</Text>
+            <Text style={styles.description}>Awesome shopping</Text>
 
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.inputStyle}
-                    placeholder="Enter your username or email"
+                    placeholder="Enter your username"
                     value={username}
                     onChangeText={(data) => { setUserName(data) }}
+                    autoCapitalize="none"
+                />
+
+                <TextInput
+                    style={styles.inputStyle}
+                    placeholder="Enter your email"
+                    value={email}
+                    onChangeText={(data) => { setEmail(data) }}
+                    autoCapitalize="none"
+                />
+
+                <TextInput
+                    style={styles.inputStyle}
+                    placeholder="Enter your phone number"
+                    value={phone}
+                    onChangeText={(data) => { setPhone(data) }}
                     autoCapitalize="none"
                 />
 
@@ -43,16 +50,16 @@ const Login = ({ navigation }) => {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => submit()}>
-                <Text style={styles.buttonText}>Login</Text>
+            >
+                <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
 
             <View>
 
-                <Text style={styles.registerText} >Don't have a account ?</Text>
+                <Text style={styles.registerText} >Already have a account ?</Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("Register")}>
-                    <Text style={styles.registerBtn}>Click here to Register</Text>
+                    onPress={() => navigation.navigate("LoginScreen")}>
+                    <Text style={styles.registerBtn}>Click here to Login</Text>
                 </TouchableOpacity>
             </View>
 
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // alignItems: "center",
         // justifyContent: "center",
-        marginVertical: 200,
+        marginVertical: 120,
         marginHorizontal: 10,
     },
     heading: {
@@ -112,4 +119,4 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
 })
-export default Login
+export default Register

@@ -6,6 +6,7 @@ import Detail from '../screens/Detail';
 import Login from '../screens/Login';
 import AllProductDemo from '../screens/AllProductDemo';
 import PlaceOrderScreen from '../screens/PlaceOrderScreen';
+import Register from '../screens/Register';
 export default Routes = () => {
     const Stack = createNativeStackNavigator();
     return (
@@ -16,6 +17,7 @@ export default Routes = () => {
                 <Stack.Screen name="DetailScreen" component={Detail} />
                 <Stack.Screen name="LoginScreen" component={Login} />
                 <Stack.Screen name="PlaceOrderScreen" component={PlaceOrderScreen} />
+                <Stack.Screen name="Register" component={Register} />
             </Stack.Navigator>
         </NavigationContainer>
     )
