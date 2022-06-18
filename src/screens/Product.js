@@ -7,7 +7,7 @@ import Product from '../../api/Api';
 export default function ProductScreen({ navigation }) {
     const [isLoading, setLoading] = React.useState(true);
     const [data, setData] = React.useState([]);
-    console.log(data.data);
+    // console.log(data.data);
 
     const getArticlesFromApi = async () => {
         try {

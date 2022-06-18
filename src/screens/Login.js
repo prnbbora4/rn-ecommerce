@@ -25,7 +25,7 @@ const Login = ({ navigation }) => {
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.inputStyle}
-                    placeholder="Enter your username or email"
+                    placeholder="Enter your email"
                     value={username}
                     onChangeText={(data) => { setUserName(data) }}
                     autoCapitalize="none"

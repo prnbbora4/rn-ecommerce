@@ -36,7 +36,7 @@ const Detail = ({ navigation, route }) => {
                 </View>
 
                 <View>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("PlaceOrderScreen", { price: priceQty })}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("PlaceOrderScreen", { price: priceQty, title: title })}>
                         <Text style={styles.buttonText}>
                             Buy Now
                         </Text>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     textPrice: {
         fontSize: 18,
         color: "green",
-        minWidth: 50
+        minWidth: 70
     },
     priceWithQty: {
         flexDirection: "row",

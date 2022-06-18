@@ -1,19 +1,41 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
+import axios from 'axios';
 
 const PlaceOrderScreen = ({ navigation, route }) => {
-    const { price } = route.params
+    const { price, title } = route.params
     const [phone, setPhone] = React.useState('')
     const [address, setAddress] = React.useState('')
     const [pin, setPin] = React.useState('')
     const [state, setState] = React.useState('')
 
+
     const order = () => {
-        if (phone == "" && address == "" && pin == "" && state == "") {
-            Alert.alert("Fill the form correctly..")
+        const inputvalues = {
+            price: price,
+            phone: phone,
+            address: address,
+            pin: pin,
+            state: state,
+            product_name: title
+        }
+        if (phone && address && pin && state) {
+            axios.post('https://sk1nixo0.directus.app/items/orders', inputvalues, {
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+            })
+                .then(function (response) {
+                    // console.log("post", response);
+                    Alert.alert(`Successfully ordered your item. \nPrice:  ₹ ${price}`)
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
         }
         else {
-            Alert.alert(`Successfully ordered your item. \nPrice:  ₹ ${price}`)
+            Alert.alert("Fill the form correctly..")
+
         }
     }
     return (

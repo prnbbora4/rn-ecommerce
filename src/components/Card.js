@@ -12,7 +12,7 @@ const Card = (props) => {
         <TouchableOpacity onPress={() => navigation.navigate('DetailScreen', { title: title, price: price, image: image, description: description })}>
             <Image style={styles.image} source={{ uri: source }} />
             <Text style={styles.text}>{title}</Text>
-            <Text style={styles.textPrice}>₹ {price}</Text>
+            <Text style={styles.textPrice}>₹ {price}/Kg</Text>
         </TouchableOpacity>
     </View>)
 }

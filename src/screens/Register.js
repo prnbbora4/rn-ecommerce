@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 const Register = ({ navigation }) => {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
 
 
@@ -16,17 +15,9 @@ const Register = ({ navigation }) => {
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.inputStyle}
-                    placeholder="Enter your username"
+                    placeholder="Enter your email"
                     value={username}
                     onChangeText={(data) => { setUserName(data) }}
-                    autoCapitalize="none"
-                />
-
-                <TextInput
-                    style={styles.inputStyle}
-                    placeholder="Enter your email"
-                    value={email}
-                    onChangeText={(data) => { setEmail(data) }}
                     autoCapitalize="none"
                 />
 
