@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         // alignItems: "center",
-        // justifyContent: "center",
-        marginVertical: 200,
+        justifyContent: "center",
+        // marginVertical: 200,
         marginHorizontal: 10,
     },
     heading: {

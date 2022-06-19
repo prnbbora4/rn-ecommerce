@@ -1,10 +1,29 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
+import { auth } from '../../firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = ({ navigation }) => {
-    const [username, setUserName] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [phone, setPhone] = useState("")
+    // const [phone, setPhone] = useState("")
+
+    const handleRegister = () => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("error");
+                // ..
+            });
+
+    }
 
 
     return (
@@ -16,18 +35,18 @@ const Register = ({ navigation }) => {
                 <TextInput
                     style={styles.inputStyle}
                     placeholder="Enter your email"
-                    value={username}
-                    onChangeText={(data) => { setUserName(data) }}
+                    value={email}
+                    onChangeText={(data) => { setEmail(data) }}
                     autoCapitalize="none"
                 />
 
-                <TextInput
+                {/* <TextInput
                     style={styles.inputStyle}
                     placeholder="Enter your phone number"
                     value={phone}
                     onChangeText={(data) => { setPhone(data) }}
                     autoCapitalize="none"
-                />
+                /> */}
 
                 <TextInput
                     style={styles.inputStyle}
@@ -41,6 +60,7 @@ const Register = ({ navigation }) => {
 
             <TouchableOpacity
                 style={styles.button}
+                onPress={handleRegister}
             >
                 <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
@@ -64,8 +84,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         // alignItems: "center",
-        // justifyContent: "center",
-        marginVertical: 120,
+        justifyContent: "center",
+        // marginVertical: 150,
         marginHorizontal: 10,
     },
     heading: {

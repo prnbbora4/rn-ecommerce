@@ -15,9 +15,9 @@ export default Routes = () => {
                 <Stack.Screen name="ProductScreen" component={ProductScreen} />
                 <Stack.Screen name="AllProductDemo" component={AllProductDemo} />
                 <Stack.Screen name="DetailScreen" component={Detail} />
-                <Stack.Screen name="LoginScreen" component={Login} />
+                <Stack.Screen name="LoginScreen" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="PlaceOrderScreen" component={PlaceOrderScreen} />
-                <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
