@@ -1,18 +1,42 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
+import { auth } from '../../firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ({ navigation }) => {
-    const [username, setUserName] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
 
-    const submit = () => {
-        if (username === "p" || password === "p@12") {
-            Alert.alert("Welcome " + username + " enjoy your shopping")
-            // navigation.navigate("ProductScreen")
-            navigation.navigate("AllProductDemo", { username: username })
-        }
-        else {
+    // const submit = () => {
+    //     if (username === "p" || password === "p@12") {
+    //         Alert.alert("Welcome " + username + " enjoy your shopping")
+    //         // navigation.navigate("ProductScreen")
+    //         navigation.navigate("AllProductDemo", { username: username })
+    //     }
+    //     else {
+    //         Alert.alert("Invalid Credintials !!! Please Try again..")
+    //     }
+    // }
+
+    const handleLogin = () => {
+        if (email && password) {
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Log in
+                    const user = userCredential.user;
+                    // console.log(user);
+                    Alert.alert("Welcome enjoy your shopping")
+                    navigation.navigate("AllProductDemo")
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error(errorMessage);
+                });
+
+        } else {
             Alert.alert("Invalid Credintials !!! Please Try again..")
         }
     }
@@ -26,8 +50,8 @@ const Login = ({ navigation }) => {
                 <TextInput
                     style={styles.inputStyle}
                     placeholder="Enter your email"
-                    value={username}
-                    onChangeText={(data) => { setUserName(data) }}
+                    value={email}
+                    onChangeText={(data) => { setEmail(data) }}
                     autoCapitalize="none"
                 />
 
@@ -43,7 +67,7 @@ const Login = ({ navigation }) => {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => submit()}>
+                onPress={() => handleLogin()}>
                 <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
 
