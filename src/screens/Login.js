@@ -26,14 +26,15 @@ const Login = ({ navigation }) => {
                     // Log in
                     const user = userCredential.user;
                     // console.log(user);
-                    Alert.alert("Welcome enjoy your shopping")
+                    Alert.alert("Welcome ! enjoy your shopping")
                     navigation.navigate("AllProductDemo")
 
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.error(errorMessage);
+                    Alert.alert(errorMessage)
+                    // console.error(errorMessage);
                 });
 
         } else {

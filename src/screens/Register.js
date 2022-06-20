@@ -9,16 +9,18 @@ const Register = ({ navigation }) => {
     // const [phone, setPhone] = useState("")
 
     const handleRegister = () => {
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password, phone)
             .then((userCredential) => {
                 // Register
                 const user = userCredential.user;
+                Alert.alert("Registered successfully.")
                 // console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error(errorMessage);
+                // console.error(errorMessage);
+                Alert.alert(errorMessage)
             });
     }
 
